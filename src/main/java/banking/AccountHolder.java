@@ -1,6 +1,8 @@
 package banking;
 
 public abstract class AccountHolder {
+
+
 	private int idNumber;
 
 	/**
@@ -14,6 +16,10 @@ public abstract class AccountHolder {
 	 * @return private int {@link AccountHolder#idNumber}
 	 */
 	public int getIdNumber() {
-        return -1;
+        return idNumber;
+	}
+
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
 	}
 }

@@ -20,13 +20,18 @@ public class Bank implements BankInterface {
     }
 
     public Long openCommercialAccount(Company company, int pin, double startingDeposit) {
-        // complete the function
-        return -1L;
+        AccountHolder accountHolder = new AccountHolder();
+        accountHolder.setIdNumber(company.getTaxId());
+        Account account = new Account(accountHolder,accountHolder.getIdNumber(), pin, startingDeposit);
+
+        return account.getAccountNumber();
     }
 
     public Long openConsumerAccount(Person person, int pin, double startingDeposit) {
-        // complete the function
-        return -1L;
+        AccountHolder accountHolder = new AccountHolder();
+        accountHolder.setIdNumber(person.getIdNumber());
+        Account account = new Account(accountHolder,accountHolder.getIdNumber(), pin, startingDeposit);
+        return account.getAccountNumber();
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {

@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class CommercialAccount  {
 	private List<Person> authorizedUsers;
-	private Long accountNumber = 1l;
-	private int pin=0;
+	private Long accountNumber;
+	private int pin;
 	private double startingDeposit;
 
 	public CommercialAccount(Company company, Long accountNumber, int pin, double startingDeposit) {
@@ -26,7 +26,9 @@ public class CommercialAccount  {
 	 * @param person The authorized user to add to the account.
 	 */
 	protected void addAuthorizedUser(Person person) {
-		authorizedUsers.add(person);
+		if (pin == accountHolder.getIdNumber()) {
+			authorizedUsers.add(person);
+		}
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class CommercialAccount  {
 	 * @return true if person matches an authorized user in {@link #authorizedUsers}; otherwise, false.
 	 */
 	public boolean isAuthorizedUser(Person person) {
-		// complete the function
-        return true;
+		AccountHolder accountHolder = new AccountHolder(person.getIdNumber())
+        return (accountHolder.getIdNumber() == accountNumber) ? true : false ;
 	}
 }

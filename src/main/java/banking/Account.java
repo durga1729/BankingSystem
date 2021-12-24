@@ -3,7 +3,7 @@ package banking;
 /**
  * Abstract bank account class.<br>
  * <br>
- *
+ * <p>
  * Private Variables:<br>
  * {@link #accountHolder}: AccountHolder<br>
  * {@link #accountNumber}: Long<br>
@@ -11,44 +11,40 @@ package banking;
  * {@link #balance}: double
  */
 public abstract class Account {
-	private AccountHolder accountHolder;
-	private Long accountNumber;
-	private int pin;
-	private double balance;
+    private AccountHolder accountHolder;
+    private Long accountNumber;
+    private int pin;
+    private double balance;
 
-	protected Account(AccountHolder accountHolder, Long accountNumber, int pin, double startingDeposit) {
-		this.accountHolder  = accountHolder;
-		this.accountNumber = accountNumber;
-		this.pin = pin;
-		this.balance = startingDeposit;
-	}
+    protected Account(AccountHolder accountHolder, Long accountNumber, int pin, double startingDeposit) {
+        this.accountHolder = accountHolder;
+        this.accountNumber = accountNumber;
+        this.pin = pin;
+        this.balance = startingDeposit;
+    }
 
-	public AccountHolder getAccountHolder() {
+    public AccountHolder getAccountHolder() {
+        return accountHolder;
+    }
 
-        return null;
-	}
+    public boolean validatePin(int attemptedPin) {
+        return (attemptedPin == pin) ? true : false;
+    }
 
-	public boolean validatePin(int attemptedPin) {
-		// complete the function
-        return true;
-	}
+    public double getBalance() {
+        return balance;
+    }
 
-	public double getBalance() {
-		// complete the function
-        return -1;
-	}
+    public Long getAccountNumber() {
+        return accountNumber;
+    }
 
-	public Long getAccountNumber() {
-		// complete the function
-        return -1L;
-	}
+    public void creditAccount(double amount) {
+        balance = getBalance() + amount;
+    }
 
-	public void creditAccount(double amount) {
-		// complete the function
-	}
-
-	public boolean debitAccount(double amount) {
-		// complete the function
-        return true;
-	}
+    public boolean debitAccount(double amount) {
+        balance = getBalance() - amount;
+        return (balance > 0) ? true : false;
+    }
 }
